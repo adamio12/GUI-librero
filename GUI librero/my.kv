@@ -1,0 +1,88 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "main"
+    autor: autor
+    libro: libro
+    noLibro: noLibro
+
+    GridLayout:
+        rows:4
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "#libro: "
+
+            TextInput:
+                id: noLibro
+                multiline: False
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Libro: "
+
+            TextInput:
+                id: libro
+                multiline: False
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Autor: "
+
+            TextInput:
+                id: autor
+                multiline: False
+
+        GridLayout:
+            cols: 4
+
+            Button:
+                text: "Alta"
+                on_release:
+                    root.alta()
+
+            Button:
+                text: "Cambio autor"
+                on_release:
+                    root.cambioAutor()
+
+            Button:
+                text: "Borrar libro #"
+                on_release:
+                    root.baja()
+
+            Button:
+                text: "Mostrar: "
+
+                on_press:
+                    root.muestraL()
+                    app.root.current = "second"
+                    root.manager.transition.direction = "left"
+                    
+<SecondWindow>:
+    name: "second"
+    verLib: verLib
+
+    GridLayout:
+
+        cols:1
+
+        Label:
+            id:verLib
+            text:"sin libros"
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+                #root.escribe()
+        
